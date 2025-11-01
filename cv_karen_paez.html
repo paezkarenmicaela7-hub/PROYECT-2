@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Karen Micaela Paez</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .photo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 5px solid white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+        }
+
+        .contact-item i {
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+        }
+
+        .profile-text {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-item i {
+            font-size: 1.5em;
+        }
+
+        .experience-item, .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(5px);
+        }
+
+        .item-title {
+            color: #333;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .item-subtitle {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .item-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20BA5A;
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .buttons-container {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cv-content">
+        <div class="header">
+            <div class="photo-container">
+                <div class="photo-placeholder">
+                    <i class="fas fa-user" style="font-size: 60px; color: #ccc;"></i>
+                    <p style="font-size: 12px; margin-top: 10px;">Agregar foto</p>
+                </div>
+            </div>
+            <h1>Karen Micaela Paez</h1>
+            <p class="subtitle">Profesional en Ventas y Desarrollo Comercial</p>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Posadas, Misiones</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+54 9 XXX XXX XXXX</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>karen.paez@email.com</span>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <a href="https://wa.me/549XXXXXXXXX" class="btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                Contactar por WhatsApp
+            </a>
+            <button onclick="descargarPDF()" class="btn btn-download">
+                <i class="fas fa-download"></i>
+                Descargar CV en PDF
+            </button>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-user-circle"></i> Perfil Profesional</h2>
+                <p class="profile-text">
+                    Profesional orientada a resultados con sólida trayectoria en el área comercial. Destaco por mi capacidad de resolver situaciones complejas con agilidad, establecer relaciones duraderas con clientes y tomar decisiones estratégicas. Mi enfoque proactivo y habilidad para generar soluciones innovadoras me permiten superar objetivos y contribuir al crecimiento sostenible del negocio.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-star"></i> Habilidades Comerciales</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Innovación y Pensamiento Estratégico</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-rocket"></i>
+                        <span>Orientación a Resultados</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Toma de Decisiones Efectivas</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-handshake"></i>
+                        <span>Negociación y Cierre de Ventas</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users"></i>
+                        <span>Gestión de Relaciones Comerciales</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Flexibilidad y Resiliencia</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Análisis de Mercado</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Prospección y Desarrollo de Clientes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+                
+                <div class="experience-item">
+                    <div class="item-title">Ejecutiva de Ventas Senior</div>
+                    <div class="item-subtitle">Empresa XYZ S.A.</div>
+                    <div class="item-date">Enero 2021 - Presente</div>
+                    <div class="item-description">
+                        Desarrollo y gestión de cartera de clientes estratégicos. Superación de objetivos comerciales trimestrales en un 25%. Implementación de estrategias de fidelización que incrementaron la recurrencia de compra en un 40%.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-title">Asesora Comercial</div>
+                    <div class="item-subtitle">Comercial ABC Ltda.</div>
+                    <div class="item-date">Marzo 2018 - Diciembre 2020</div>
+                    <div class="item-description">
+                        Atención personalizada a clientes, identificación de oportunidades de negocio y cierre de ventas. Reconocida como "Mejor Vendedora del Año 2019" por alcanzar el 150% de la meta anual.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formación Académica</h2>
+                
+                <div class="education-item">
+                    <div class="item-title">Licenciatura en Administración de Empresas</div>
+                    <div class="item-subtitle">Universidad Nacional de Misiones</div>
+                    <div class="item-date">2014 - 2018</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="item-title">Diplomatura en Marketing Digital y Ventas</div>
+                    <div class="item-subtitle">Instituto de Capacitación Profesional</div>
+                    <div class="item-date">2020</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Competencias Adicionales</h2>
+                <div class="profile-text">
+                    <ul style="list-style-position: inside; color: #555; line-height: 2;">
+                        <li>CRM: Salesforce, HubSpot</li>
+                        <li>Microsoft Office: Nivel Avanzado</li>
+                        <li>Análisis de datos comerciales con Excel y Power BI</li>
+                        <li>Técnicas de venta consultiva y SPIN Selling</li>
+                        <li>Idiomas: Español (nativo), Inglés (intermedio)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function descargarPDF() {
+            const element = document.getElementById('cv-content');
+            const opt = {
+                margin: 0,
+                filename: 'CV_Karen_Paez.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Ocultar botones temporalmente
+            const buttons = document.querySelector('.buttons-container');
+            buttons.style.display = 'none';
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                buttons.style.display = 'flex';
+            });
+        }
+
+        // Función para cargar imagen de perfil
+        function cargarImagen() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const photoContainer = document.querySelector('.photo-container');
+                        photoContainer.innerHTML = `<img src="${event.target.result}" alt="Foto de perfil">`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        // Hacer clic en la foto para cambiarla
+        document.querySelector('.photo-container').addEventListener('click', cargarImagen);
+        document.querySelector('.photo-container').style.cursor = 'pointer';
+    </script>
+</body>
+</html>
